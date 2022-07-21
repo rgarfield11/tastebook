@@ -1,18 +1,40 @@
-import './App.css';
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./NavBar"
+import Login from "./Login"
+import Homepage from "./Homepage"
+import Profile from "./Profile"
+import NewRecipe from "./NewRecipe"
+import "./App.css"
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
   }, []);
 
+  if (!user) return <Login onLogin={setUser} />;
+  
   return (
     <div className="App">
-      <h1>Page Count: {count}</h1>
+      <NavBar setUser={setUser}/>
+      <Switch>
+        <Route path="/new">
+          <NewRecipe user={user}/>
+        </Route>
+        <Route path="/">
+          <Homepage/>
+        </Route>
+        <Route path="/profile">
+          <Profile  user={user}/>
+        </Route>
+      </Switch>
     </div>
   );
 }
