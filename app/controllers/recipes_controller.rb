@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
 
     def create
         recipe = Recipe.create!(recipe_params)
+        ingredients = params[:ingredients]
+        ingredients.each do |ingredient|
+            Ingredient.create!(name: ingredient[:name], recipe_id: recipe.id)
+        end
         render json: recipe, status: :created
     end
 

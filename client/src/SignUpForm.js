@@ -35,7 +35,7 @@ function SignUpForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="signUpForm" onSubmit={handleSubmit}>
         <label>Username</label>
         <input
             type="text"

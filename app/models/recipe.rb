@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
-    validates :title, presence: true
-    validates :description, presence: true
-    validates :image_url, presence: true
+    has_many :ingredients, dependent: :destroy
+    belongs_to :user
+
+    validates :title, :description, :image_url, presence: true
 end
