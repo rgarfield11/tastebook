@@ -1,7 +1,92 @@
 .App {
   text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.wrapper {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  grid-gap: 2rem;
+  justify-content: center;
 }
 
 .navBar {
-  background: rgb(233, 228, 228);
+  background: blue;
+  font-family: inherit;
+}
+
+.logo {
+  color: white;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.navButton {
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem;
+  color: white;
+  border: 1px solid white;
+  background: blue;
+  
+  border-radius: 5px;
+}
+
+.navButton:hover {
+  cursor: pointer;
+  color: blue;
+  background: white;
+  transition: 0.5s;
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: 0px 2px 20px rgb(233, 228, 228);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 200ms ease-in;
+}
+
+.card_image {
+  height: 12rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card_image:hover {
+  transform: scale(1.1);
+  transition: 1s
+}
+
+.card_title {
+  padding: 1rem;
+}
+
+.card_description {
+  padding: 1rem;
+}
+
+.card_btn {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border: 2px solid blue;
+  background: transparent;
+  color: blue;
+  border-radius: 5px;
+}
+
+.card_btn:hover {
+  cursor: pointer;
+  color: white;
+  background: blue;
+  transition: 0.5s;
 }

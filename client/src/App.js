@@ -28,7 +28,7 @@ function App() {
         <Route path="/new">
           <NewRecipe user={user}/>
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Homepage/>
         </Route>
         <Route path="/profile">

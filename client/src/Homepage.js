@@ -11,15 +11,12 @@ function Homepage() {
   }, [recipeList.length]);
 
   const renderRecipes = recipeList.map((recipe)=>{
-    return <RecipeCard key={recipe.id} title={recipe.title} description={recipe.description}/>
+    return <RecipeCard key={recipe.id} title={recipe.title} description={recipe.description} image={recipe.image_url}/>
   })
 
   return (
-    <div>
-        <center>
-        <h1>Homepage</h1>
+    <div class="wrapper">
         {renderRecipes}
-        </center>
     </div>
   )
 }

@@ -26,17 +26,17 @@ function NavBar({ setUser }) {
 
   const navStyle = {
     display: "inline-block",
-    color: "blue",
-    margin: "auto",
-    padding: "10px"
+    // color: "blue",
+    // margin: "auto",
+    // padding: "10px"
   }
 
   return (
     <div className="navBar">
-      <h2 id="logo" style={navStyle} onClick={handleReturnHome}>tastebook</h2> &nbsp;
-      <button style={navStyle} onClick={handleNewRecipe}>Add Recipe</button> &nbsp;
-      <button style={navStyle} onClick={handleProfileRoute}>Profile</button> &nbsp;
-      <button style={navStyle} onClick={handleLogout}>Logout</button> &nbsp;
+      <h2 id="logo" class="logo" style={navStyle} onClick={handleReturnHome}>tastebook</h2> &nbsp;
+      <button  class="navButton" style={navStyle} onClick={handleNewRecipe}>Add Recipe</button> &nbsp;
+      <button  class="navButton" style={navStyle} onClick={handleProfileRoute}>Profile</button> &nbsp;
+      <button  class="navButton" style={navStyle} onClick={handleLogout}>Logout</button> &nbsp;
     </div>
   )
 }

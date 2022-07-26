@@ -30,14 +30,14 @@ function LoginForm( {onLogin} ) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htlmFor="username">Username</label>
+      <label>Username</label>
       <input 
         type="text"
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <label htmlFor="password">Password</label>
+      <label>Password</label>
       <input 
         type="password"
         id="password"

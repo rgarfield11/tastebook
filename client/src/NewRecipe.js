@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 function NewRecipe({ user }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("")
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
@@ -17,6 +18,7 @@ function NewRecipe({ user }) {
       body: JSON.stringify({
         title,
         description,
+        image_url: imageUrl,
         user_id: user.id
       }),
     }).then((r) => {
@@ -38,7 +40,7 @@ function NewRecipe({ user }) {
     <>
     <h2>Add Your Recipe</h2>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
+      <label>Title </label>
       <input 
         type="text"
         id="title"
@@ -46,12 +48,20 @@ function NewRecipe({ user }) {
         onChange={(e) => setTitle(e.target.value)}
       />
       <br/>
-      <label htmlFor="description">Description</label>
+      <label>Description </label>
       <input 
         type="text"
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+      />
+      <br/>
+      <label>Image URL </label>
+      <input 
+        type="text"
+        id="description"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
       />
       <br/>
       <button type="submit">Submit</button>
