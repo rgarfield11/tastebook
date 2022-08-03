@@ -90,7 +90,6 @@ function EditRecipe({user}) {
     ))
   }
 
-  console.log(recipe)
   return (
     <>
     <h2>Edit Recipe</h2>

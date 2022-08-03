@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("https://dry-retreat-79517.herokuapp.com/me").then((r) => {
+    fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("https://dry-retreat-79517.herokuapp.com/recipes")
+    fetch("/recipes")
       .then((r) => r.json())
       .then((data) => setRecipeList(data));
   }, []);
