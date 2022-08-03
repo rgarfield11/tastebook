@@ -35,30 +35,36 @@ function SignUpForm({ onLogin }) {
   }
 
   return (
-    <form className="signUpForm" onSubmit={handleSubmit}>
-        <label>Username</label>
+    <form className="signup_form" onSubmit={handleSubmit}>
+        <h4>Sign Up</h4>
         <input
+            placeholder="Enter Username"
+            className="signup_input"
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)} 
         />
         <br/>
-        <label>Password</label>
         <input
+            placeholder="Enter Password"
+            className="signup_input"
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} 
         />
-        <label>Confirm Password</label>
+        <br/>
         <input
+            placeholder="Confirm Password"
+            className="signup_input"
             type="password"
             id="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)} 
         />
-        <button type="submit">Sign Up</button>
+        <br/>
+        <button className="signup_btn" type="submit">Sign Up</button>
         <p>{mapErrors}</p>
     </form>
   )

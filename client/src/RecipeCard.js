@@ -1,21 +1,24 @@
 import React from 'react'
-import {useHistory} from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 
-function RecipeCard({title, description, image}) {
-  const history= useHistory()
-
+function RecipeCard({ recipe }) {
+  const history = useHistory()
+  
   function handleRecipeClick() {
-    console.log("test")
+    history.push(`/recipes/${recipe.id}`)
   }
-
+  
   return (
     <div className="card">
       <div className="card_body">
-        <img alt="" className="card_image" src={image}/>
-        <h2 className="card_title">{title}</h2>
-        <p className="card_description">{description}</p>
+        <img alt="" className="card_image" src={recipe.image_url}/>
+        <div className="card_info">
+        <h1 className="card_title">{recipe.title}</h1>
+        <p className="card_description">{recipe.description}</p>
+        <h5 className="card_user">By {recipe?.user?.username}</h5>
+        </div>
       </div>
-      <button onClick={handleRecipeClick} class="card_btn">View Recipe</button>
+      <button value={recipe.id} onClick={handleRecipeClick} className="card_btn">View Recipe</button>
     </div>
   )
 }

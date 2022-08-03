@@ -5,13 +5,14 @@ import SignUpForm from "./SignUpForm";
 function Login({onLogin}) {
     const [showLogin, setShowLogin] = useState(true)
   return (
-    <div>
+    <div className="login_wrapper">
+      <h1 className="login_logo">tastebook</h1>
         {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
-          <p>
+          <p className="login_form_switch">
             Don't have an account? &nbsp;
-            <button onClick={() => setShowLogin(false)}>Sign Up</button>
+            <button className="login_btn_switch"onClick={() => setShowLogin(false)}>Sign Up</button>
           </p>
         </>
         ) : (

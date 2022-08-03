@@ -11,8 +11,12 @@
   justify-content: center;
 }
 
+.expanded_wrapper {
+  margin: 2rem;
+}
+
 .navBar {
-  background: blue;
+  background: #294680;
   font-family: inherit;
 }
 
@@ -31,21 +35,21 @@
   margin: 0.5rem;
   color: white;
   border: 1px solid white;
-  background: blue;
+  background: #294680;
   
   border-radius: 5px;
 }
 
 .navButton:hover {
   cursor: pointer;
-  color: blue;
+  color: #294680;
   background: white;
   transition: 0.5s;
 }
 
 .card {
   overflow: hidden;
-  box-shadow: 0px 2px 20px rgb(233, 228, 228);
+  box-shadow: 0px 2px 20px rgb(192, 189, 189);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
@@ -54,9 +58,28 @@
 }
 
 .card_image {
+  position: relative;
   height: 12rem;
   width: 100%;
   object-fit: cover;
+  z-index: 0;
+}
+
+.card_info {
+  position: relative;
+  background: white;
+  z-index: 1;
+}
+
+.expanded_image {
+  width: 45%;
+  height: 45%;
+  object-fit: cover;
+  float: left;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 .card_image:hover {
@@ -65,11 +88,42 @@
 }
 
 .card_title {
-  padding: 1rem;
+  margin: 1rem;
+}
+
+.expanded_header {
+  background: #294680;
+  color: white;
+  width: 100%;
+}
+
+.expanded_title {
+  margin: 1rem;
+  text-align: left;
+  padding-top: 1rem;
 }
 
 .card_description {
-  padding: 1rem;
+  margin: auto;
+  font-style: italic;
+}
+
+.card_user {
+  margin: 0.5rem 0rem 0.5rem 1rem;
+  text-align: left;
+}
+
+.expanded_description {
+  margin: 1rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.expanded_user {
+  margin: 1rem;
+  text-align: left;
+  font-style: italic;
+  padding-bottom: 1rem;
 }
 
 .card_btn {
@@ -78,16 +132,235 @@
   font-weight: bold;
   font-size: 1rem;
   margin: 0.5rem;
-  border: 2px solid blue;
+  border: 2px solid #294680;
   background: transparent;
-  color: blue;
+  color: #294680;
   border-radius: 5px;
 }
 
 .card_btn:hover {
   cursor: pointer;
   color: white;
-  background: blue;
+  background: #294680;
   transition: 0.5s;
 }
 
+.expanded_text_head {
+  color:#294680;
+  margin: 1rem;
+}
+
+.expanded_ingredients {
+  margin: 1rem;
+  float: right;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  width: 45%;
+  text-align: left;
+
+}
+
+.expanded_instructions {
+  margin: 1rem;
+  float: right;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 45%;
+  text-align: left;
+}
+
+.my_card_edit {
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  margin: 0.5rem;
+  border: 2px solid #294680;
+  background: transparent;
+  color: #294680;
+  border-radius: 5px;
+}
+
+.my_card_delete {
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  margin: 0.5rem;
+  border: 2px solid #294680;
+  background: transparent;
+  color: #294680;
+  border-radius: 5px;
+}
+
+.my_card_edit:hover {
+  cursor: pointer;
+  color: white;
+  background: #294680;
+  transition: 0.5s;
+}
+
+.my_card_delete:hover {
+  cursor: pointer;
+  color: white;
+  background: red;
+  border: 2px solid red;
+  transition: 0.5s;
+}
+
+.profile_header {
+  color: #294680;
+}
+
+/* LOGIN */
+
+.login_wrapper {
+  position: absolute;
+  background:#294680;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login_logo {
+  color: white;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: 10%
+}
+
+.login_form {
+  position: relative;
+  margin: auto;
+  height: 31%;
+  width: 30%;
+  background: white;
+  border-radius: 5px;
+  display: grid;
+  text-align: center;
+  color: #294680;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  
+}
+
+.login_input {
+  margin: 1rem 2rem 1rem 2rem;
+  height: 60%;
+  position: relative;
+  display: inline-block;
+  font-size: large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.login_btn {
+  padding: 1rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border: 2px solid #294680;
+  background: transparent;
+  color: #294680;
+  border-radius: 5px;
+}
+
+.login_btn:hover {
+  cursor: pointer;
+  color: white;
+  background: #294680;
+  transition: 0.5s;
+}
+
+.login_form_switch {
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+  color: white;
+}
+
+.login_btn_switch {
+  height: 35px;
+  width: 70px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.login_btn_switch:hover {
+  cursor: pointer;
+}
+
+/* SIGNUP */
+
+.signup_form {
+  position: relative;
+  margin: auto;
+  height: 39%;
+  width: 30%;
+  background: white;
+  border-radius: 5px;
+  display: grid;
+  text-align: center;
+  color: #294680;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  
+}
+
+.signup_input {
+  margin: 1rem 2rem 1rem 2rem;
+  height: 60%;
+  position: relative;
+  display: inline-block;
+  font-size: large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.signup_btn {
+  padding: 1rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border: 2px solid #294680;
+  background: transparent;
+  color: #294680;
+  border-radius: 5px;
+}
+
+.signup_btn:hover {
+  cursor: pointer;
+  color: white;
+  background: #294680;
+  transition: 0.5s;
+}
+
+/* SEARCH */
+
+.search_inputs{
+  margin: 2rem;
+  display: flex;
+}
+
+.search input {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 300px;
+}
+
+.search_icon {
+  height: 60px;
+  width: 50px;
+  background-color: white;
+  border: 2px solid black;
+  display: grid;
+  place-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

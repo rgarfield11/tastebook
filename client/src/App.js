@@ -5,10 +5,13 @@ import Login from "./Login"
 import Homepage from "./Homepage"
 import Profile from "./Profile"
 import NewRecipe from "./NewRecipe"
+import RecipeExpanded from "./RecipeExpanded"
+import EditRecipe from "./EditRecipe"
 import "./App.css"
 
 function App() {
   const [user, setUser] = useState(null);
+  const [recipeList, setRecipeList] = useState([]);
 
   useEffect(() => {
     // auto-login
@@ -19,6 +22,12 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/recipes")
+      .then((r) => r.json())
+      .then((data) => setRecipeList(data));
+  }, []);
+
   if (!user) return <Login onLogin={setUser} />;
   
   return (
@@ -26,13 +35,19 @@ function App() {
       <NavBar setUser={setUser}/>
       <Switch>
         <Route path="/new">
-          <NewRecipe user={user}/>
+          <NewRecipe user={user} recipeList={recipeList} setRecipeList={setRecipeList}/>
         </Route>
         <Route exact path="/">
-          <Homepage/>
+          <Homepage recipeList={recipeList} setRecipeList={setRecipeList} />
         </Route>
         <Route path="/profile">
-          <Profile  user={user}/>
+          <Profile user={user} setUser={setUser} recipeList={recipeList} setRecipeList={setRecipeList}/>
+        </Route>
+        <Route path="/recipes/:id">
+          <RecipeExpanded/>
+        </Route>
+        <Route path="/edit_recipes/:id">
+          <EditRecipe user={user}/>
         </Route>
       </Switch>
     </div>

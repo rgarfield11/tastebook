@@ -29,22 +29,28 @@ function LoginForm( {onLogin} ) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Username</label>
+    <form className="login_form" onSubmit={handleSubmit}>
+      <h4>Login</h4>
       <input 
+        placeholder="Enter Username"
+        className="login_input"
         type="text"
         id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+      
       />
-      <label>Password</label>
+      <br/>
       <input 
+        placeholder="Enter Password"
+        className="login_input"
         type="password"
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
+      <br/>
+      <button  className="login_btn" type="submit">Login</button>
       {mapErrors}
     </form>
   )

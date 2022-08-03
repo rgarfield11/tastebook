@@ -1,24 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import RecipeCard from "./RecipeCard"
+import SearchBar from "./SearchBar"
 
-function Homepage() {
-    const [recipeList, setRecipeList] = useState([]);
+function Homepage({ recipeList, setRecipeList }) {
 
-  useEffect(() => {
-    fetch("/recipes")
-      .then((r) => r.json())
-      .then((data) => setRecipeList(data));
-  }, [recipeList.length]);
+  function handleFilter(e) {
+    const filteredRecipes = recipeList.filter((recipe) => {
+      if(recipe.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+        return true
+      } else {
+        return false
+      }
+    })
+    setRecipeList(filteredRecipes)
+  }
 
   const renderRecipes = recipeList.map((recipe)=>{
-    return <RecipeCard id={recipe.id} key={recipe.id} title={recipe.title} description={recipe.description} image={recipe.image_url}/>
+    // console.log(recipe)
+    return <RecipeCard recipeList={recipeList} key={recipe.id} recipe={recipe}/>
   })
 
   return (
-    <div className="wrapper">
-        {renderRecipes}
+    <div className="homepage">
+      <SearchBar recipeList={recipeList} handleFilter={handleFilter} />
+      <div className="wrapper">
+          {renderRecipes}
+      </div>
     </div>
   )
 }
+
 
 export default Homepage

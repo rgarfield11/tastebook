@@ -1,19 +1,37 @@
-import React, { useState } from 'react'
-import { useHistory } from "react-router";
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom';
+import EditIngredients from "./EditIngredients"
+import EditInstructions from "./EditInstructions"
 
-function NewRecipe({ user, recipeList, setRecipeList }) {
+function EditRecipe({user}) {
+  const params = useParams();
+  const history = useHistory();
+  const [recipe, setRecipe] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [ingredients, setIngredients] = useState([{name: ""}]);
+  const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([{name: ""}]);
   const [errors, setErrors] = useState([]);
-  const history = useHistory();
+
+  useEffect(() => {
+    fetch(`/recipes/${params.id}`)
+    .then(response => response.json())
+    .then(data => setRecipe(data))
+  },[params.id])
+
+  useEffect(() => {
+    setIngredients(recipe.ingredients)
+    setInstructions(recipe.instructions)
+    setTitle(recipe.title)
+    setDescription(recipe.description)
+    setImageUrl(recipe.image_url)
+  }, [recipe])
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/recipes", {
-      method: "POST",
+    fetch(`/recipes/${params.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,9 +45,7 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then(recipe => {
-          setRecipeList([...recipeList, recipe]);
-          history.push("/");})
+        history.push("/profile");
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -74,13 +90,13 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
     ))
   }
 
+  console.log(recipe)
   return (
     <>
-    <h2>Add Your Recipe</h2>
+    <h2>Edit Recipe</h2>
     <form onSubmit={handleSubmit}>
       <label>Title </label>
       <input 
-        className="recipe_input"
         type="text"
         id="title"
         value={title}
@@ -89,7 +105,6 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
       <br/>
       <label>Description </label>
       <input 
-        className="recipe_input"
         type="text"
         id="description"
         value={description}
@@ -97,48 +112,28 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
       />
       <br/>
       <label>Image URL </label>
-      <input
-        className="recipe_input" 
+      <input 
         type="text"
         id="description"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
       />
       <br/>
-      {ingredients.map((e, index) => (
-            <div className="ingredients" key={index}>
-              <label>Ingredient </label>
-              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeIngredients(index, e)} />
-              {
-                index ? 
-                  <button type="button"  className="button_remove_ingredient" onClick={() => removeIngredients(index)}>Remove</button> 
-                : null
-              }
-            </div>
+      {ingredients && ingredients.map((e) => (
+            <EditIngredients key={e.id} e={e}/>
           ))}
           <div className="add_ingredient">
               <button className="button add" type="button" onClick={() => addIngredients()}>Add</button>
           </div>
-      
       <br/>
-      {/*  */}
-      {instructions.map((e, i) => (
-            <div className="instructions" key={i}>
-              <label>Instruction </label>
-              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeInstructions(i, e)} />
-              {
-                i ? 
-                  <button type="button"  className="button_remove_instruction" onClick={() => removeInstructions(i)}>Remove</button> 
-                : null
-              }
-            </div>
+      {instructions && instructions.map((e) => (
+            <EditInstructions key={e.id} e={e} />
           ))}
           <div className="add_instruction">
               <button className="button add" type="button" onClick={() => addInstructions()}>Add</button>
           </div>
       
       <br/>
-      {/*  */}
       <button type="submit">Submit</button>
     </form>
     <p>{mapErrors}</p>
@@ -146,4 +141,4 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
   )
 }
 
-export default NewRecipe
+export default EditRecipe
