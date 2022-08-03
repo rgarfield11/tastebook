@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://dry-retreat-79517.herokuapp.com/",
+  "proxy": "https://tastebookrecipes.herokuapp.com/",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
