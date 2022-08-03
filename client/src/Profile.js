@@ -9,7 +9,7 @@ function Profile({ user, recipeList, setRecipeList }) {
     fetch(`/users/${user.id}`)
     .then(response => response.json())
     .then(data => setMyRecipes(data.recipes))
-  },[user.recipes])
+  },[user.id])
 
   const mapMyRecipes = myRecipes.map((recipe)=>{
     return <MyRecipeCard key={recipe.id} recipe={recipe} recipeList={recipeList} setRecipeList={setRecipeList}/>

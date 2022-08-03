@@ -118,15 +118,15 @@ function EditRecipe({user}) {
         onChange={(e) => setImageUrl(e.target.value)}
       />
       <br/>
-      {ingredients && ingredients.map((e) => (
-            <EditIngredients key={e.id} e={e}/>
+      {ingredients && ingredients.map((e, index) => (
+            <EditIngredients index={index} key={e.id} e={e}  handleChangeIngredients={handleChangeIngredients} removeIngredients={removeIngredients} />
           ))}
           <div className="add_ingredient">
               <button className="button add" type="button" onClick={() => addIngredients()}>Add</button>
           </div>
       <br/>
-      {instructions && instructions.map((e) => (
-            <EditInstructions key={e.id} e={e} />
+      {instructions && instructions.map((e, index) => (
+            <EditInstructions index={index} key={e.id} e={e} handleChangeInstructions={handleChangeInstructions} removeInstructions={removeInstructions} />
           ))}
           <div className="add_instruction">
               <button className="button add" type="button" onClick={() => addInstructions()}>Add</button>

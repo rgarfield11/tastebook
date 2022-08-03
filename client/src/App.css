@@ -232,7 +232,6 @@
 .login_form {
   position: relative;
   margin: auto;
-  height: 31%;
   width: 30%;
   background: white;
   border-radius: 5px;
@@ -254,6 +253,7 @@
 }
 
 .login_btn {
+  position: relative;
   padding: 1rem;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;

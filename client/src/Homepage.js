@@ -2,7 +2,7 @@ import React from 'react'
 import RecipeCard from "./RecipeCard"
 import SearchBar from "./SearchBar"
 
-function Homepage({ recipeList, setRecipeList }) {
+function Homepage({ recipeList, setRecipeList, filteredRecipeList, setFilteredRecipeList }) {
 
   function handleFilter(e) {
     const filteredRecipes = recipeList.filter((recipe) => {
@@ -12,17 +12,17 @@ function Homepage({ recipeList, setRecipeList }) {
         return false
       }
     })
-    setRecipeList(filteredRecipes)
+    setFilteredRecipeList(filteredRecipes)
   }
 
-  const renderRecipes = recipeList.map((recipe)=>{
+  const renderRecipes = filteredRecipeList.map((recipe)=>{
     // console.log(recipe)
     return <RecipeCard recipeList={recipeList} key={recipe.id} recipe={recipe}/>
   })
 
   return (
     <div className="homepage">
-      <SearchBar recipeList={recipeList} handleFilter={handleFilter} />
+      <SearchBar recipeList={recipeList} handleFilter={handleFilter} setFilteredRecipeList={setFilteredRecipeList} />
       <div className="wrapper">
           {renderRecipes}
       </div>

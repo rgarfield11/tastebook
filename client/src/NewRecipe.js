@@ -122,13 +122,13 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
       
       <br/>
       {/*  */}
-      {instructions.map((e, i) => (
-            <div className="instructions" key={i}>
+      {instructions.map((e, index) => (
+            <div className="instructions" key={index}>
               <label>Instruction </label>
-              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeInstructions(i, e)} />
+              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeInstructions(index, e)} />
               {
-                i ? 
-                  <button type="button"  className="button_remove_instruction" onClick={() => removeInstructions(i)}>Remove</button> 
+                index ? 
+                  <button type="button"  className="button_remove_instruction" onClick={() => removeInstructions(index)}>Remove</button> 
                 : null
               }
             </div>

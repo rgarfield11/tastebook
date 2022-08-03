@@ -12,6 +12,12 @@ import "./App.css"
 function App() {
   const [user, setUser] = useState(null);
   const [recipeList, setRecipeList] = useState([]);
+  const [filteredRecipeList, setFilteredRecipeList] = useState([])
+
+  function handleSetting(response){
+    setRecipeList(response)
+    setFilteredRecipeList(response)
+}
 
   useEffect(() => {
     // auto-login
@@ -25,7 +31,7 @@ function App() {
   useEffect(() => {
     fetch("/recipes")
       .then((r) => r.json())
-      .then((data) => setRecipeList(data));
+      .then((response) => handleSetting(response));
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
@@ -38,7 +44,7 @@ function App() {
           <NewRecipe user={user} recipeList={recipeList} setRecipeList={setRecipeList}/>
         </Route>
         <Route exact path="/">
-          <Homepage recipeList={recipeList} setRecipeList={setRecipeList} />
+          <Homepage recipeList={recipeList} setRecipeList={setRecipeList} filteredRecipeList={filteredRecipeList} setFilteredRecipeList={setFilteredRecipeList}/>
         </Route>
         <Route path="/profile">
           <Profile user={user} setUser={setUser} recipeList={recipeList} setRecipeList={setRecipeList}/>
