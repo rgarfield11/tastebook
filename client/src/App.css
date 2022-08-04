@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-
+/* NAVBAR */
 
 .navBar {
   background: #294680;
@@ -48,6 +48,8 @@
   background: white;
   transition: 0.5s;
 }
+
+/* RECIPE CARD */
 
 .card {
   overflow: hidden;
@@ -223,8 +225,12 @@
 .login_btn_switch {
   height: 35px;
   width: 70px;
-  border: 2px solid white;
-  border-radius: 5px;
+  border: 2px solid #ddd;
+  background: white;
+  color: #294680;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: small;
+  border-radius: 5%;
 }
 
 .login_btn_switch:hover {
@@ -262,7 +268,7 @@
   font-size: 1rem;
   margin: 0.5rem;
   border: 2px solid #294680;
-  background: transparent;
+  background: white;
   color: #294680;
   border-radius: 5px;
 }
