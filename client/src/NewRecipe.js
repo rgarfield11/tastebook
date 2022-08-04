@@ -75,11 +75,11 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
   }
 
   return (
-    <>
-    <h2>Add Your Recipe</h2>
-    <form onSubmit={handleSubmit}>
-      <label>Title </label>
+    <div className="new_recipe">
+    <h2 className="recipe_form_header">Add Your Recipe</h2>
+    <form classname="new_recipe_form"onSubmit={handleSubmit}>
       <input 
+        placeholder="Recipe Title..."
         className="recipe_input"
         type="text"
         id="title"
@@ -87,8 +87,8 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
         onChange={(e) => setTitle(e.target.value)}
       />
       <br/>
-      <label>Description </label>
       <input 
+        placeholder="Recipe Description..."
         className="recipe_input"
         type="text"
         id="description"
@@ -96,8 +96,8 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
         onChange={(e) => setDescription(e.target.value)}
       />
       <br/>
-      <label>Image URL </label>
       <input
+        placeholder="Recipe Image URL..."
         className="recipe_input" 
         type="text"
         id="description"
@@ -107,42 +107,62 @@ function NewRecipe({ user, recipeList, setRecipeList }) {
       <br/>
       {ingredients.map((e, index) => (
             <div className="ingredients" key={index}>
-              <label>Ingredient </label>
-              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeIngredients(index, e)} />
+              <input 
+                placeholder="Ingredient..."
+                className="recipe_input" 
+                type="text" name="name" 
+                value={e.name} 
+                onChange={e => handleChangeIngredients(index, e)} />
               {
                 index ? 
-                  <button type="button"  className="button_remove_ingredient" onClick={() => removeIngredients(index)}>Remove</button> 
+                <div className="button_remove" >
+                  <button 
+                    className="remove_button"
+                    type="button"  
+                    onClick={() => removeIngredients(index)}
+                    >Remove Ingredient</button>
+                </div>
                 : null
               }
             </div>
           ))}
+          <br/>
           <div className="add_ingredient">
-              <button className="button add" type="button" onClick={() => addIngredients()}>Add</button>
+              <button className="button_add" type="button" onClick={() => addIngredients()}>Add Ingredient</button>
           </div>
       
       <br/>
-      {/*  */}
       {instructions.map((e, index) => (
             <div className="instructions" key={index}>
-              <label>Instruction </label>
-              <input className="recipe_input" type="text" name="name" value={e.name} onChange={e => handleChangeInstructions(index, e)} />
+              <input 
+                placeholder="Instruction..."
+                className="recipe_input" 
+                type="text" name="name" 
+                value={e.name} 
+                onChange={e => handleChangeInstructions(index, e)} />
+              <br/>
               {
                 index ? 
-                  <button type="button"  className="button_remove_instruction" onClick={() => removeInstructions(index)}>Remove</button> 
+                <div className="button_remove"> 
+                  <button
+                    className="remove_button"
+                    type="button"  
+                    onClick={() => removeInstructions(index)}
+                    >Remove Instruction</button>
+                </div>
                 : null
               }
             </div>
           ))}
-          <div className="add_instruction">
-              <button className="button add" type="button" onClick={() => addInstructions()}>Add</button>
-          </div>
-      
       <br/>
-      {/*  */}
-      <button type="submit">Submit</button>
+          <div className="add_instruction">
+              <button className="button_add" type="button" onClick={() => addInstructions()}>Add Instruction</button>
+          </div>
+      <br/>
+      <button type="submit" className="submit_recipe_btn">Save Recipe</button>
     </form>
     <p>{mapErrors}</p>
-    </>
+    </div>
   )
 }
 

@@ -374,5 +374,64 @@
 .expanded_text_head {
   color:#294680;
   text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 2% 0% 0% 0%;
+}
+
+/* NEW RECIPE */
+
+.recipe_form_header {
+  color: #294680;
+  text-decoration: underline;
+}
+
+.recipe_input {
+  margin: 1rem 2rem 1rem 2rem;
+  height: 60%;
+  width: 70%;
+  position: relative;
+  display: inline-block;
+  font-size: large;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.remove_button {
+  color: red;
+  background: white;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+.remove_button:hover {
+  cursor: pointer;
+}
+
+.button_add {
+  color: #294680;
+  background: white;
+  border: 2px solid #294680;
+  border-radius: 5px;
+}
+
+.button_add:hover {
+  cursor: pointer;
+}
+
+.submit_recipe_btn {
+  padding: 1rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border: 2px solid #294680;
+  background: transparent;
+  color: #294680;
+  border-radius: 5px;
+}
+
+.submit_recipe_btn:hover {
+  cursor: pointer;
+  color: white;
+  background: #294680;
+  transition: 0.5s;
 }

@@ -92,26 +92,26 @@ function EditRecipe({user}) {
 
   return (
     <>
-    <h2>Edit Recipe</h2>
+    <h2 className="recipe_form_header">Edit Recipe</h2>
     <form onSubmit={handleSubmit}>
-      <label>Title </label>
       <input 
+        className="recipe_input" 
         type="text"
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <br/>
-      <label>Description </label>
       <input 
+        className="recipe_input" 
         type="text"
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
       <br/>
-      <label>Image URL </label>
       <input 
+        className="recipe_input" 
         type="text"
         id="description"
         value={imageUrl}
@@ -121,19 +121,21 @@ function EditRecipe({user}) {
       {ingredients && ingredients.map((e, index) => (
             <EditIngredients index={index} key={e.id} e={e}  handleChangeIngredients={handleChangeIngredients} removeIngredients={removeIngredients} />
           ))}
+      <br/>
           <div className="add_ingredient">
-              <button className="button add" type="button" onClick={() => addIngredients()}>Add</button>
+              <button className="button_add" type="button" onClick={() => addIngredients()}>Add Ingredient</button>
           </div>
       <br/>
       {instructions && instructions.map((e, index) => (
             <EditInstructions index={index} key={e.id} e={e} handleChangeInstructions={handleChangeInstructions} removeInstructions={removeInstructions} />
           ))}
+      <br/>
           <div className="add_instruction">
-              <button className="button add" type="button" onClick={() => addInstructions()}>Add</button>
+              <button className="button_add" type="button" onClick={() => addInstructions()}>Add Instruction</button>
           </div>
       
       <br/>
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit_recipe_btn">Save Recipe</button>
     </form>
     <p>{mapErrors}</p>
     </>

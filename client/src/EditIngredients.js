@@ -5,10 +5,21 @@ function EditIngredients({e, index, handleChangeIngredients, removeIngredients})
   return (
     <div>
         <div className="ingredients">
-            <label>Ingredient </label>
-            <input type="text" name="name" value={e.name} onChange={e => handleChangeIngredients(e)} />
-            <button type="button"  className="button_remove_ingredient" onClick={() => removeIngredients(index)}>Remove</button> 
+            <input 
+              className="recipe_input" 
+              type="text" 
+              name="name" 
+              value={e.name} 
+              onChange={e => handleChangeIngredients(e)} 
+            />
+            <div className="button_remove">
+              <button 
+                className="remove_button"
+                type="button" 
+                onClick={() => removeIngredients(index)}
+              >Remove Ingredient</button> 
             </div>
+        </div>
     </div>
   )
 }
