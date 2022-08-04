@@ -183,6 +183,8 @@
   color: #294680;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
+  box-shadow: 0px 2px 20px #101c35;
+  ;
   
 }
 
@@ -240,6 +242,7 @@
 /* SIGNUP */
 
 .signup_form {
+  box-shadow: 0px 2px 20px #101c35;
   position: relative;
   margin: 0% 15% 0% 15%;
   background: white;
