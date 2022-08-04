@@ -15,7 +15,6 @@ function RecipeCard({ recipe }) {
         <div className="card_info">
         <h1 className="card_title">{recipe.title}</h1>
         <p className="card_description">{recipe.description}</p>
-        <h5 className="card_user">By {recipe?.user?.username}</h5>
         </div>
       </div>
       <button value={recipe.id} onClick={handleRecipeClick} className="card_btn">View Recipe</button>

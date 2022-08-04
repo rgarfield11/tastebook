@@ -31,7 +31,7 @@ function RecipeExpanded() {
         <h2 className="expanded_text_head">Instructions</h2>
         <ol>
           {recipe.instructions?.map(instruction => (
-            <li>{instruction.name}</li>
+            <div><li>{instruction.name}</li><br/></div>
           ))}
         </ol>
       </div>
